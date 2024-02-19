@@ -3,9 +3,9 @@ use ieee.std_logic_1164.all;
 
 entity Vending is 
     port (
-        CLK, RST            : in std_logic;
+        CLTicket_Select, RST            : in std_logic;
         Coin_in             : in std_logic_vector(2 downto 0);
-        K                   : in std_logic_vector(2 downto 0);
+        Ticket_Select                   : in std_logic_vector(2 downto 0);
         Submit, S500, S1000 : in std_logic
     );
 end entity Vending;
@@ -17,12 +17,12 @@ architecture Behavior of Vending is
     signal Not_Enough, Remaning_Money : std_logic;
 
 begin 
-    process (CLK, RST, Coin_in, K, Submit)
+    process (CLTicket_Select, RST, Coin_in, Ticket_Select, Submit)
         variable Coin_Counter : integer := 0;
     begin 
         if (RST = '0') then 
             Current_State <= Idle;
-        elsif (rising_edge(CLK)) then
+        elsif (rising_edge(CLTicket_Select)) then
             Current_State <= Next_State;
         end if;
 
@@ -48,11 +48,11 @@ begin
 
             case Current_State is 
                 when Idle =>
-                    if (K = "0001") then
+                    if (Ticket_Select = "0001") then
                         Next_State <= T4;
-                    elsif (K = "0010") then
+                    elsif (Ticket_Select = "0010") then
                         Next_State <= T15;
-                    elsif (K = "0011") then
+                    elsif (Ticket_Select = "0011") then
                         Next_State <= T5;
                     else 
                         Next_State <= Error;
