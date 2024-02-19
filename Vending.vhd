@@ -4,16 +4,18 @@ use ieee.std_logic_1164.all;
 entity Vending is 
     port (
         CLK, RST                        : in std_logic;
-        Coin_in                         : in std_logic_vector(2 downto 0);
-        Ticket_Select                   : in std_logic_vector(2 downto 0);
-        Submit, S500, S1000             : in std_logic
+        Coin_in                         : in std_logic_vector(1 downto 0);
+        Ticket_Select                   : in std_logic_vector(1 downto 0);
+        Submit                          : in std_logic
     );
 end entity Vending;
 
 architecture Behavior of Vending is
     type state_Type is (Idle, T4, T5, T15, Error);
-    signal Current_State, Next_State: state_Type;
-    signal T4_Out, T5_Out, T15_Out : std_logic;
+
+    signal Current_State, Next_State  : state_Type;
+    signal T4_Out, T5_Out, T15_Out    : std_logic;
+    signal S500, S1000                : std_logic;
     signal Not_Enough, Remaning_Money : std_logic;
 
 begin 
@@ -27,9 +29,7 @@ begin
         end if;
 
         if (Submit = '0') then
-            S500 <= '0';
-            S1000 <= '0';
-            
+
             case Coin_in is
                 when "01" =>
                     S500 <= '1';

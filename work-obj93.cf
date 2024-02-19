@@ -1,4 +1,4 @@
 v 4
-file . "tb_test.vhd" "9f4c411a413812ebbbe21b5692cf754715932516" "20240219174638.932":
-  entity tb_vending at 1( 0) + 0 on 4;
-  architecture testbench of tb_vending at 7( 95) + 0 on 4;
+file . "Vending.vhd" "d5ac37c7efcaf96d084dfe41fd8114f853e12720" "20240219183258.512":
+  entity vending at 1( 0) + 0 on 4;
+  architecture behavior of vending at 13( 375) + 0 on 4;
