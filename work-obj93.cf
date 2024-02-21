@@ -1,4 +1,0 @@
-v 4
-file . "TB_Vending.vhd" "b4f96b8e48c6bb64973d0b1c7c4b1f7794d87ada" "20240219203844.053":
-  entity vending_testbench at 1( 0) + 0 on 4;
-  architecture testbench of vending_testbench at 9( 167) + 0 on 4;
