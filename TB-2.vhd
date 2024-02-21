@@ -54,14 +54,15 @@ begin
 
     Stimulus_Process : process
     begin
-        -- Test Scenario 1
-        Coin_in <= "0001";     -- Coin value 500
+        -- Test Scenario 2
+        Coin_in <= "0001";     -- Coin Value Sum = 500
         Submit <= '0'; 
 	wait for CLK_PERIOD / 2;
-        Ticket_Select <= "11"; -- Select Ticket 4000  
+        Ticket_Select <= "11"; -- Select Ticket 4000
         Submit <= '1';
 
         wait;
     end process Stimulus_Process;
 
 end Testbench;
+
